@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johan L. Schaarup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #111111;
+    --dark: #2a2a2a;
+    --muted: #6b6b6b;
+    --light-muted: #999999;
+    --rule: #d0d0d0;
+    --bg: #fafafa;
+    --white: #ffffff;
+    --accent: #8b0000;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-family: 'EB Garamond', 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--black);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .site-name {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-group {
+    display: flex;
+    align-items: baseline;
+    gap: 28px;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover { color: var(--black); }
+
+  .lang-toggle {
+    display: flex;
+    align-items: baseline;
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-left: 8px;
+    padding-left: 28px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .lang-toggle button {
+    background: none;
+    border: none;
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 2px 6px;
+    color: var(--light-muted);
+    transition: color 0.2s ease;
+  }
+
+  .lang-toggle button:hover { color: var(--black); }
+  .lang-toggle button.active { color: var(--black); font-weight: 600; }
+  .lang-toggle .sep { color: var(--rule); font-size: 11px; user-select: none; }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 120px;
+  }
+
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero .subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--dark);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  .hero .contact-line {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--light-muted);
+  }
+
+  .hero .contact-line a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero .contact-line a:hover {
+    color: var(--black);
+    border-color: var(--black);
+  }
+
+  section {
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    margin-bottom: 8px;
+  }
+
+  section h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  section p {
+    color: var(--dark);
+    margin-bottom: 14px;
+    max-width: 620px;
+  }
+
+  section p:last-child { margin-bottom: 0; }
+
+  .entry {
+    padding: 20px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .entry:first-of-type { border-top: none; padding-top: 0; }
+
+  .entry-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .entry-meta {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    color: var(--light-muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .entry p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--dark);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 48px;
+    margin: 24px 0 20px;
+    padding: 20px 0;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .stat { display: flex; flex-direction: column; }
+
+  .stat-value {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--black);
+  }
+
+  .stat-value.positive { color: #1a6b3c; }
+  .stat-value.negative { color: var(--accent); }
+
+  .stat-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    margin-top: 4px;
+  }
+  
+  .stat-note {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Crimson Pro', serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 3px 10px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+
+  .tag.live { color: #1a6b3c; border-color: #1a6b3c; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px 32px;
+    margin-top: 20px;
+  }
+
+  .skills-grid dt {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    padding-top: 2px;
+  }
+
+  .skills-grid dd {
+    font-size: 16px;
+    color: var(--dark);
+    padding-bottom: 12px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .course-list { list-style: none; padding: 0; }
+
+  .course-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .course-header {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    border-bottom: 1px solid var(--rule) !important;
+    padding-bottom: 8px !important;
+  }
+  .course-name { font-size: 16px; color: var(--dark); }
+
+  .course-detail {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    color: var(--light-muted);
+    white-space: nowrap;
+  }
+
+  .course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .course-grade {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--black);
+    white-space: nowrap;
+    min-width: 28px;
+    text-align: right;
+  }
+
+  a.course-name {
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  a.course-name:hover {
+    color: var(--black);
+    border-color: var(--black);
+  }
+
+  footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--light-muted);
+  }
+
+  @media (max-width: 600px) {
+    .header-inner { flex-direction: column; gap: 12px; }
+    .nav-group { flex-wrap: wrap; gap: 16px; }
+    nav { gap: 20px; }
+    .lang-toggle { border-left: none; padding-left: 0; }
+    .hero h1 { font-size: 32px; }
+    .stats-row { gap: 28px; flex-wrap: wrap; }
+    .skills-grid { grid-template-columns: 1fr; gap: 4px 0; }
+    .skills-grid dt { padding-bottom: 0; }
+    .skills-grid dd { padding-bottom: 16px; }
+    .course-list li { flex-direction: column; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="site-name">Johan L. Schaarup</a>
+    <div class="nav-group">
+      <nav>
+        <a href="#datalfa" data-i18n="nav_project">Projekt</a>
+        <a href="#thesis" data-i18n="nav_thesis">Bachelorprojekt</a>
+        <a href="#projects" data-i18n="nav_projects">Akademisk</a>
+        <a href="#about" data-i18n="nav_about">Om</a>
+      </nav>
+      <div class="lang-toggle">
+        <button id="btn-da" class="active" onclick="setLang('da')">DA</button>
+        <span class="sep">/</span>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <p class="subtitle" data-i18n="hero_subtitle">Københavns Universitet | Datalogi-Økonomi</p>
+    <h1>Johan Langelund Schaarup</h1>
+    <p data-i18n="hero_desc">Jeg er en ambitiøs studerende der kombinerer dataanalyse med økonomisk forståelse. Efter fem semestre på Datalogi-Økonomi Bacheloren på Københavns Universitet har jeg opbygget et solidt fundament, inden for både programmering og økonomiske principper. Planlægger at fortsætte med en kandidatgrad i økonomi (Cand.polit).</p>
+    <p class="contact-line">
+      <a href="mailto:johanlasc@gmail.com">johanlasc@gmail.com</a> | <span data-i18n="hero_location">København, Danmark</span>
+    </p>
+  </div>
+
+  <section id="datalfa">
+    <p class="section-label" data-i18n="datalfa_label">Igangværende Projekt</p>
+    <h2>Idiosynkratisk Momentum</h2>
+    <p data-i18n="datalfa_desc">En systematisk nordisk large- og mid-cap strategi baseret på idiosynkratiske momentumsignaler. Live-handlet siden august 2025 med ugentlig rebalancering.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-value positive">+25.06%</span>
+        <span class="stat-label" data-i18n="stat_return">Total Afkast (siden 04/08/2025)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">2.54</span>
+        <span class="stat-label">Sharpe Ratio</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value negative">−4.03%</span>
+        <span class="stat-label">Max Drawdown</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">33</span>
+        <span class="stat-label" data-i18n="stat_weeks">Uger Live</span>
+      </div>
+    </div>
+    <p class="stat-note" data-i18n="datalfa_stat_note">Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 28/03).</p>
+    <div class="entry">
+      <div class="entry-title" data-i18n="datalfa_signal_title">Signalkonstruktion</div>
+      <p data-i18n="datalfa_signal_desc">Rullende 52-ugers OLS-residualer mod equal weighted land- og sektorindeks. Idiosynkratisk momentum beregnet som kumulativ sum af residualer fra OLS, hvor der crash filtreres gennem kort/lang volatilitetsratio. Top 10 tickers med højest signals holdes næste uge.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="datalfa_regime_title">Regime-overlay</div>
+      <p data-i18n="datalfa_regime_desc">Makroskalare: Baltic Dry Index 6-måneders momentum, Euro high-yield vs 2-årig median-spread og US rentekurvens 10Y–2Y hældning. Regimesignalerne kombineres med en XGBoost timingskalar trænet på walk-forward krydsvalidering, hvorfra der gives en samlet vægt eksponering for hver af top-10 tickersne.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="datalfa_universe_title">Univers &amp; Eksekvering</div>
+      <p data-i18n="datalfa_universe_desc">70 nordiske large-cap aktier på tværs af DK, SE, NO, FI. Equal weighted portefølje af top-10 signaler. Fredag generes signaler, mandag morgen eksekveres (limit ordre sættes op). Ved eksponering under 100% er den grundlæggende ide, at holde resterende kapital i risiko frie aktiver.</p>
+    </div>
+
+    <div style="margin-top: 16px;">
+    </div>
+    <div style="margin-top: 24px;">
+      <p class="section-label" data-i18n="datalfa_report_label">Eksempel på ugentlig rapport (D. 23/03)</p>
+      <a href="src/rapport_0323.png" target="_blank">
+        <img src="src/rapport_0323.png" alt="Ugentlig rapport" style="width:100%; border-radius: 6px; border: 1px solid var(--rule); margin-top: 8px;">
+      </a>
+    </div>
+  </section>
+
+  <section id="thesis">
+    <p class="section-label" data-i18n="thesis_label">Bachelorprojekt | Forår 2026</p>
+    <h2 data-i18n="thesis_title">Konkurrence på NYC's Transportmarkeder</h2>
+    <p data-i18n="thesis_desc">Strukturel estimation af efterspørgsel efter transport i New York City med Berry, Levinsohn &amp; Pakes (1995) diskrete valgmetoder. Modellering af substitutionsmønstre mellem Yellow Taxi, Uber, Lyft, MTA subway og MTA bus i Queens og Manhattan.</p>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="thesis_method_title">Metode</div>
+      <p data-i18n="thesis_method_desc">PyBLP nested logit med tre nests: traditionel taxa, high-volume for-hire vehicles (Uber/Lyft) og MTA (Bus og Subway). Produkt-fixed effects med Yellow Taxi som referencekategori for korrekte priskoefficienter.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="thesis_id_title">Identifikation</div>
+      <p data-i18n="thesis_id_desc">BLP-instrumenter konstrueret fra produktkarakteristika. Produktkarakteristika inkluderer ventetid, rejsetid, hastighedseffektivitet (min-per-mile) og en komfortindikator (binær).</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="thesis_super_title">Vejledning</div>
+      <p data-i18n="thesis_super_desc">Christina G. (hovedvejleder) og Daniel (medvejleder, ph.d.-studerende). Samarbejde med studiepartner Niels.</p>
+    </div>
+
+    <div style="margin-top: 16px;">
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label" data-i18n="projects_label">Akademisk</p>
+    <h2 data-i18n="projects_title">Andre Projekter</h2>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="proj2_title">Volatilitetsspillovers: US–Europa</div>
+      <div class="entry-meta" data-i18n="proj2_meta">Økonometri II</div>
+      <p data-i18n="proj2_desc">GARCH- og TGARCH-analyse af volatilitetstransmission mellem amerikanske og europæiske aktiemarkeder. VAR/CVAR modellering med impuls-respons funktioner.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="proj3_title">Danske Makrotidsserier</div>
+      <div class="entry-meta" data-i18n="proj3_meta">Økonometri II</div>
+      <p data-i18n="proj3_desc">ARIMA-modellering af KP-boligprisindekset. Unit root-test og PPP-analyse (Mozambique/Sydafrika) med CATS-kointegration i OxMetrics.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="proj4_title">Porteføljeteori &amp; Asset Pricing</div>
+      <div class="entry-meta">Data-Driven Financial Models</div>
+      <p data-i18n="proj4_desc">Efficiente fronter, CAPM-test, Single Index Model, Treynor-Mazuy market timing og Jensen's alpha. Implementeret i Python og MATLAB på tværs af ETF'er, obligationer og enkeltaktier.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title" data-i18n="proj1_title">Nordisk Faktormodel</div>
+      <div class="entry-meta">Egen interresse</div>
+      <p data-i18n="proj1_desc">ML-baseret faktormodeller for 30 nordiske large-caps med logistisk regression og XGBoost med fundamentale indikatorer og Fama/French faktorer. Alle modeller konvergerede til AUC ≈ 0.505.</p>
+    </div>
+
+    <h2 style="margin-top: 40px;" data-i18n="coursework_title">Udvalgte Kurser</h2>
+    <ul class="course-list">
+      <li class="course-header">
+      <span data-i18n="course_header_name">Kursus</span>
+      <span data-i18n="course_header_grade">Karakter</span>
+    </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndak17001u" target="_blank" class="course-name" data-i18n="course7_name">Data-Driven Financial Models</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndab22009u" target="_blank"  class="course-name" data-i18n="course3_name">Numeriske Metoder</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndab20009u" target="_blank"  class="course-name" data-i18n="course8_name">Mikroøkonomi B</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndab20005u" target="_blank"  class="course-name" data-i18n="course2_name">Økonometri A</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">7</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndab24008u/" target="_blank"  class="course-name" data-i18n="course9_name">Økonometri B</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/a%C3%98ka08007u/2025-2026" target="_blank"  class="course-name" data-i18n="course10_name">Økonometri II</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndab21010u" target="_blank"  class="course-name" data-i18n="course4_name">Databaser &amp; Informationssystemer</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">4</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/a%C3%98ka08178u/2024-2025" target="_blank"  class="course-name" data-i18n="course6_name">Videregående Statistik (Sommerskole)</a>
+          <span class="course-detail"></span>
+        </div>
+        <span class="course-grade">Bestået</span>
+      </li>
+      <li>
+        <div class="course-info">
+          <a href="https://kurser.ku.dk/course/ndaa09030u/" target="_blank"  class="course-name" data-i18n="course5_name">IT-Projektledelse</a>
+          <span class="course-detail" data-i18n="course5_detail"></span>
+        </div>
+        <span class="course-grade">10</span>
+      </li>
+    </ul>
+  </section>
+  <section id="about">
+    <p class="section-label" data-i18n="about_label">Om</p>
+    <h2>Kompetencer</h2>
+    <p data-i18n="about_desc">B.Sc. Datalogi-Økonomi studerende på 6. semester med fokus på kvantitativ finans, anvendt økonometri og markedsstrukturer.</p>
+
+    <dl class="skills-grid">
+      <dt data-i18n="skills_prog">Programmering</dt>
+      <dd>Python, SAS, F#, C, SQL (Inkl. Postgres), MATLAB</dd>
+
+      <dt data-i18n="skills_econ">Økonometri</dt>
+      <dd>OLS, IV, GMM, Panel, VAR/CVAR, GARCH, BLP</dd>
+
+      <dt>Stats</dt>
+      <dd>Bl.a. Monte Carlo simulationer, Non-linear systemmer, PCA, Faktoranalyse, Bootstrap</dd>
+
+      <dt data-i18n="skills_tools">Værktøjer</dt>
+      <dd>OxMetrics, Excel, Git &amp; div. APIs</dd>
+
+      <dt data-i18n="skills_lang">Sprog</dt>
+      <dd data-i18n="skills_lang_val">Dansk (modersmål), Engelsk (flydende)</dd>
+    </dl>
+  </section>
+</main>
+
+<footer data-i18n="footer">Johan L. Schaarup | København | 2026</footer>
+
+<script>
+const translations = {
+  da: {
+    nav_project: "Projekt",
+    nav_thesis: "Bachelorprojekt",
+    nav_projects: "Akademisk",
+    nav_about: "Om",
+    hero_subtitle: "Københavns Universitet | Datalogi-Økonomi",
+    hero_desc: "Jeg er en ambitiøs studerende der kombinerer dataanalyse med økonomisk forståelse. Efter fem semestre på Datalogi-Økonomi Bacheloren på Københavns Universitet har jeg opbygget et solidt fundament, inden for både programmering og økonomiske principper. Planlægger at fortsætte med en kandidatgrad i økonomi (Cand.polit).",
+    hero_location: "København, Danmark",
+    datalfa_label: "Igangværende Projekt",
+    datalfa_desc: "En systematisk nordisk large- og mid-cap strategi baseret på idiosynkratiske momentumsignaler. Live-handlet siden august 2025 med ugentlig rebalancering.",
+    datalfa_stat_note: "Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 28/03).",
+    stat_weeks: "Uger Live",
+    stat_return: "Total Afkast (siden 04/08/2025)",
+    datalfa_signal_title: "Signalkonstruktion",
+    datalfa_signal_desc: "Rullende 52-ugers OLS-residualer mod equal weighted land- og sektorindeks. Idiosynkratisk momentum beregnet som kumulativ sum af residualer fra OLS, hvor der crash filtreres gennem kort/lang volatilitetsratio. Top 10 tickers med højest signals holdes næste uge.",
+    datalfa_regime_title: "Regime-overlay",
+    datalfa_regime_desc: "Makroskalare: Baltic Dry Index 6-måneders momentum, Euro high-yield vs 2-årig median-spread og US rentekurvens 10Y–2Y hældning. Regimesignalerne kombineres med en XGBoost timingskalar trænet på walk-forward krydsvalidering, hvorfra der gives en samlet vægt eksponering for hver af top-10 tickersne.",
+    datalfa_universe_title: "Univers & Eksekvering",
+    datalfa_universe_desc: "70 nordiske large-cap aktier på tværs af DK, SE, NO, FI. Equal weighted portefølje af top-10 signaler. Fredag generes signaler, mandag morgen eksekveres (limit ordre sættes op). Ved eksponering under 100% er den grundlæggende ide, at holde resterende kapital i risiko frie aktiver.",
+    datalfa_report_label: "Eksempel på ugentlig rapport",
+    thesis_label: "Bachelorprojekt · Forår 2026",
+    thesis_title: "Konkurrence på NYC's Transportmarkeder",
+    thesis_desc: "Strukturel estimation af efterspørgsel efter transport i New York City med Berry, Levinsohn &amp; Pakes (1995) diskrete valgmetoder. Modellering af substitutionsmønstre mellem Yellow Taxi, Uber, Lyft, MTA subway og MTA bus i Queens og Manhattan.",
+    thesis_method_title: "Metode",
+    thesis_method_desc: "PyBLP nested logit med tre nests: traditionel taxa, high-volume for-hire vehicles (Uber/Lyft) og MTA (Bus og Subway). Produkt-fixed effects med Yellow Taxi som referencekategori for korrekte priskoefficienter.",
+    thesis_id_title: "Identifikation",
+    thesis_id_desc: "BLP-instrumenter konstrueret fra produktkarakteristika. Produktkarakteristika inkluderer ventetid, rejsetid, hastighedseffektivitet (min-per-mile) og en komfortindikator (binær).",
+    thesis_super_title: "Vejledning",
+    thesis_super_desc: "Christina G. (hovedvejleder) og Daniel (medvejleder, ph.d.-studerende). Samarbejde med studiepartner Niels.",
+    projects_label: "Akademisk",
+    projects_title: "Akademiske Projekter",
+    proj1_title: "Nordisk Faktormodel",
+    proj1_desc: "ML-baseret faktormodeller for 30 nordiske large-caps med logistisk regression og XGBoost med fundamentale indikatorer og Fama/French faktorer. Alle modeller konvergerede til AUC ≈ 0.505.",
+    proj2_title: "Volatilitetsspillovers: US–Europa",
+    proj2_meta: "Økonometri II",
+    proj2_desc: "GARCH- og TGARCH-analyse af volatilitetstransmission mellem amerikanske og europæiske aktiemarkeder. VAR/CVAR modellering med impuls-respons funktioner",
+    proj3_title: "Danske Makrotidsserier",
+    proj3_meta: "Økonometri II",
+    proj3_desc: "ARIMA-modellering af KP-boligprisindekset. Unit root-test og PPP-analyse (Mozambique/Sydafrika) med CATS-kointegration i OxMetrics.",
+    proj4_title: "Porteføljeteori & Asset Pricing",
+    proj4_desc: "Efficiente fronter, CAPM-test, Single Index Model, Treynor-Mazuy market timing og Jensen's alpha. Implementeret i Python og MATLAB på tværs af ETF'er, obligationer og enkeltaktier.",
+    coursework_title: "Udvalgte Kurser",
+    course_header_name: "Kursus",
+    course_header_grade: "Karakter",
+    course1_name: "Mikroøkonomi A",
+    course2_name: "Økonometri A",
+    course3_name: "Numeriske Metoder",
+    course4_name: "Databaser & Informationssystemer",
+    course5_name: "IT-Projektledelse",
+    course6_name: "Videregående Statistik (Sommerskole)",
+    course7_name: "Data-Driven Financial Models",
+    course8_name: "Mikroøkonomi B",
+    course9_name: "Økonometri B",
+    course10_name: "Økonometri II",
+    about_label: "Om",
+    about_desc: "B.Sc. Datalogi-Økonomi studerende på 6. semester med fokus på kvantitativ finans, anvendt økonometri og markedsstrukturer.",
+    skills_prog: "Programmering",
+    skills_econ: "Økonometri",
+    skills_tools: "Værktøjer",
+    skills_lang: "Sprog",
+    skills_lang_val: "Dansk (modersmål), Engelsk (flydende)",
+    footer: "Johan L. Schaarup | København | 2026"
+  },
+  en: {
+      nav_project: "Project",
+      nav_thesis: "Bachelor Thesis",
+      nav_projects: "Academic",
+      nav_about: "About",
+      hero_subtitle: "University of Copenhagen | Computer Science & Economics",
+      hero_desc: "I am an ambitious student who combines data analysis with an understanding of economics. After five semesters in the Computer Science and Economics Bachelor’s program at the University of Copenhagen, I have built a solid foundation in both programming and economic principles. I plan to continue with a masters degree in economics (Cand.polit).",
+      hero_location: "Copenhagen, Denmark",
+      datalfa_label: "Ongoing Project",
+      datalfa_desc: "A systematic Nordic large- and mid-cap strategy based on idiosyncratic momentum signals. Live-traded since August 2025 with weekly rebalancing.",
+      stat_weeks: "Weeks Live",
+      stat_return: "Total Return (since 04/08/2025)",
+      datalfa_stat_note: "Note: Returns and metrics are based on live-traded performance (last updated 03/28).",
+      datalfa_signal_title: "Signal Construction",
+      datalfa_signal_desc: "Rolling 52-week OLS residuals against equal weighted country and sector indices. Idiosyncratic momentum computed as the cumulative sum of residuals from OLS, where crash filtering is done via the short/long volatility ratio. Top 10 tickers with the highest signals are held the following week.",
+      datalfa_regime_title: "Regime Overlay",
+      datalfa_regime_desc: "Macro scalars: Baltic Dry Index 6-month momentum, Euro high-yield vs 2-year median spread, and the US yield curve 10Y–2Y slope. Regime signals are combined with an XGBoost timing scalar trained on walk-forward cross-validation, producing an aggregate weight exposure for each of the top-10 tickers.",
+      datalfa_universe_title: "Universe & Execution",
+      datalfa_universe_desc: "70 Nordic large-cap equities across DK, SE, NO, FI. Equal weighted portfolio of the top-10 signals. Signals generated Friday, executed Monday morning (limit orders). When exposure is below 100%, remaining capital is allocated to risk free assets.",
+      datalfa_report_label: "Weekly report example",
+      thesis_label: "Bachelor Thesis · Spring 2026",
+      thesis_title: "Competition in NYC Transportation Markets",
+      thesis_desc: "Structural estimation of demand for urban transportation in New York City using Berry, Levinsohn &amp; Pakes (1995) discrete choice methods. Modeling substitution patterns between Yellow Taxi, Uber, Lyft, MTA subway, and MTA bus in Queens and Manhattan.",
+      thesis_method_title: "Methodology",
+      thesis_method_desc: "PyBLP nested logit with three nests: traditional taxi, high-volume for-hire vehicles (Uber/Lyft), and MTA (bus and subway). Product fixed effects with Yellow Taxi as reference category for correctly signed price coefficients.",
+      thesis_id_title: "Identification",
+      thesis_id_desc: "BLP instruments constructed from product characteristics. Product characteristics include waiting time, travel time, speed efficiency (min-per-mile), and a comfort indicator (binary).",
+      thesis_super_title: "Supervision",
+      thesis_super_desc: "Christina G. (supervisor) and Daniel (co-supervisor, PhD candidate). Joint work with study partner Niels.",
+      projects_label: "Academic",
+      projects_title: "Selected Projects",
+      proj1_title: "Nordic Factor Model",
+      proj1_desc: "ML-based factor models for 30 Nordic large-caps using logistic regression and XGBoost with fundamental indicators and Fama/French factors. All models converged to AUC ≈ 0.505.",
+      proj2_title: "Volatility Spillovers: US–Europe",
+      proj2_meta: "Econometrics II",
+      proj2_desc: "GARCH and TGARCH analysis of volatility transmission between US and European equity markets. VAR/CVAR modeling with impulse response functions.",
+      proj3_title: "Danish Macro Time Series",
+      proj3_meta: "Econometrics II",
+      proj3_desc: "ARIMA modeling of the KP housing price index. Unit root testing and PPP analysis (Mozambique/South Africa) using CATS cointegration in OxMetrics.",
+      proj4_title: "Portfolio Theory & Asset Pricing",
+      proj4_desc: "Efficient frontiers, CAPM testing, Single Index Model, Treynor-Mazuy market timing, and Jensen's alpha. Implemented in Python and MATLAB across ETFs, bonds, and individual equities.",
+      coursework_title: "Selected Courses",
+      course_header_name: "Course",
+      course_header_grade: "Grade",
+      course1_name: "Microeconomics A",
+      course2_name: "Econometrics A",
+      course3_name: "Numerical Methods",
+      course4_name: "Databases & Information Systems",
+      course5_name: "IT Project Management",
+      course6_name: "Advanced Statistics (Summer School)",
+      course7_name: "Data-Driven Financial Models",
+      course8_name: "Microeconomics B",
+      course9_name: "Econometrics B",
+      course10_name: "Econometrics II",
+      about_label: "About",
+      about_desc: "6th semester B.Sc. student in Computer Science & Economics (Datalogi-Økonomi) at the University of Copenhagen with focus on quantitative finance, applied econometrics and marketstructures.",
+      skills_prog: "Programming",
+      skills_econ: "Econometrics",
+      skills_tools: "Tools",
+      skills_lang: "Languages",
+      skills_lang_val: "Danish (native), English (fluent)",
+      footer: "Johan L. Schaarup | Copenhagen | 2026"
+  }
+};
+
+let currentLang = 'da';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('btn-da').classList.toggle('active', lang === 'da');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+</script>
+
+</body>
+</html>
