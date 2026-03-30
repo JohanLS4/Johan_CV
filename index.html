@@ -458,7 +458,7 @@
     <p class="stat-note" data-i18n="datalfa_stat_note">Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 28/03).</p>
     <div class="entry">
       <div class="entry-title" data-i18n="datalfa_signal_title">Signalkonstruktion</div>
-      <p data-i18n="datalfa_signal_desc">Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12-måneders periode med 1-måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl der korrigerer for heteroskedasticitet og seriel korrelation i residualerne.</p>
+      <p data-i18n="datalfa_signal_desc">Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.</p>
     </div>
 
     <div class="entry">
@@ -647,9 +647,9 @@ const translations = {
     stat_weeks: "Uger Live",
     stat_return: "Total Afkast (siden 04/08/2025)",
     datalfa_signal_title: "Signalkonstruktion",
-    datalfa_signal_desc: "Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12-måneders periode med 1-måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl der korrigerer for heteroskedasticitet og seriel korrelation i residualerne.",
+    datalfa_signal_desc: "Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.",
     datalfa_regime_title: "Regime-overlay",
-    datalfa_regime_desc: "Porteføljeeksponering skaleres via makroregime overlay der kombinerer tre indikatorer; Baltic Dry Index momentum, kreditspreadniveau og rentekurvens hældning, med en XGBoost timingmodel trænet på walk-forward krydsvalidering. Hvoraf den grundlæggende ide ved eksponering under 100%, bygger på at allokere resterende kapital til risikofrie aktiver",
+    datalfa_regime_desc: "Porteføljeeksponering skaleres via makroregime overlay der kombinerer tre indikatorer; Baltic Dry Index momentum, kreditspreadniveau og rentekurvens hældning, med en XGBoost timingmodel trænet på walk-forward krydsvalidering. Hvoraf den grundlæggende ide ved eksponering under 100%, bygger på at allokere resterende kapital til risikofrie aktiver.",
     datalfa_universe_title: "Univers & Eksekvering",
     datalfa_universe_desc: "Et bredt nordisk large-cap univers på tværs af DK, SE, NO og FI. Signaler og HTML-rapport genereres fredag og handles mandag morgen med ugentlig rebalancering.",
     datalfa_report_label: "Ugentlig rapport (d. 23/03)",
