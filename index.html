@@ -230,6 +230,42 @@
     color: var(--dark);
   }
 
+  .slide { display: none; }
+  .slide.active { display: block; }
+  
+  .slideshow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  
+  .slideshow-controls {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  
+  .slide-btn {
+    background: none;
+    border: none;
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  
+  .slide-btn:hover { color: var(--black); }
+  
+  .slide-counter {
+    font-family: 'Crimson Pro', serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--light-muted);
+  }
+
   .stats-row {
     display: flex;
     gap: 48px;
@@ -475,9 +511,19 @@
     <div style="margin-top: 16px;">
     </div>
     <div style="margin-top: 24px;">
-      <p class="section-label" data-i18n="datalfa_report_label">Ugentlig rapport (d. 23/03)</p>
-      <a href="src/rapport_0323.png" target="_blank">
-        <img src="src/rapport_0323.png" alt="Ugentlig rapport" style="width:100%; border-radius: 6px; border: 1px solid var(--rule); margin-top: 8px;">
+      <div class="slideshow-header">
+        <p class="section-label" data-i18n="datalfa_report_label">Ugentlig rapport (d. 27/03) &amp; Live portefølje (d. 01/04)</p>
+        <div class="slideshow-controls">
+          <button class="slide-btn" onclick="changeSlide(-1)">&#8592;</button>
+          <span class="slide-counter">1 / 2</span>
+          <button class="slide-btn" onclick="changeSlide(1)">&#8594;</button>
+        </div>
+      </div>
+      <a href="src/rapport_0323.png" target="_blank" class="slide active">
+        <img src="src/rapport_0323.png" alt="Ugentlig rapport" style="width:100%; border-radius: 6px; border: 1px solid var(--rule);">
+      </a>
+      <a href="src/live_0401.png" target="_blank" class="slide">
+        <img src="src/live_0401.png" alt="Live portefølje" style="width:100%; border-radius: 6px; border: 1px solid var(--rule);">
       </a>
     </div>
   </section>
@@ -760,7 +806,24 @@ const translations = {
       footer: "Johan L. Schaarup | Copenhagen | 2026"
   }
 };
+  
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const slideLabels = {
+  da: ['Ugentlig rapport (d. 23/03)', 'Live portefølje (d. 01/04)'],
+  en: ['Weekly report (Mar 23)', 'Live portfolio (Apr 01)']
+};
 
+function changeSlide(dir) {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + dir + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  document.querySelector('.slide-counter').textContent =
+    (currentSlide + 1) + ' / ' + slides.length;
+  document.querySelector('[data-i18n="datalfa_report_label"]').textContent =
+    slideLabels[currentLang][currentSlide];
+}
+  
 let currentLang = 'da';
 
 function setLang(lang) {
@@ -773,7 +836,10 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
+  document.querySelector('[data-i18n="datalfa_report_label"]').textContent =
+    slideLabels[lang][currentSlide];
 }
+
 </script>
 
 </body>
