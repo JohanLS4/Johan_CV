@@ -330,6 +330,34 @@
     border-top: 1px solid #e8e8e8;
     max-width: 620px;
   }
+  .ref-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ref-list li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid #efefef;
+    line-height: 1.6;
+  }
+  
+  .ref-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .ref-list a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  
+  .ref-list a:hover {
+    color: var(--black);
+    border-color: var(--black);
+  }
 
   .skills-grid {
     display: grid;
@@ -506,7 +534,13 @@
       <div class="entry-title" data-i18n="datalfa_universe_title">Univers &amp; Eksekvering</div>
       <p data-i18n="datalfa_universe_desc">Et bredt nordisk large-cap univers på tværs af DK, SE, NO og FI. Signaler og HTML-rapport genereres fredag og handles mandag morgen med ugentlig rebalancering.</p>
     </div>
-    <p class="ref-line" data-i18n="datalfa_refs">Litteratur: Blitz, Huij &amp; Martens (2011) <em>Residual Momentum</em> · Fama &amp; French (1989)</p>
+    <div class="ref-list" data-i18n="datalfa_refs">
+      <p class="section-label">Ref:</p>
+      <ul>
+        <li>Blitz, Huij & Martens (2011) <em>Residual Momentum</em> (Min regression tager udgangspunkt i modellen præsenteret på s. 508)</li>
+        <li>Carhart (1997) WML-faktor (Momentum Faktor), som bygger på Fama & French (1989): <a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_developed_mom.html" target="_blank">Kenneth French Data Library</a></li>
+      </ul>
+    </div>
     
     <div style="margin-top: 16px;">
     </div>
