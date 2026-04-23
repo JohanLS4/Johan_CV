@@ -511,12 +511,12 @@
 
     <div class="stats-row">
       <div class="stat">
-        <span class="stat-value positive">+27.96%</span>
+        <span class="stat-value positive">+31.26%</span>
         <span class="stat-label" data-i18n="stat_return">Total Afkast</span>
         <span class="stat-note2">(Siden 4. August, 2025)</span>
       </div>
       <div class="stat">
-        <span class="stat-value">2.32</span>
+        <span class="stat-value">2.57</span>
         <span class="stat-label">Sharpe Ratio</span>
         <span class="stat-note2"">(Rullende 26-ugers)</span>
       </div>
@@ -525,14 +525,14 @@
         <span class="stat-label">Max Drawdown</span>
       </div>
       <div class="stat">
-        <span class="stat-value">34</span>
+        <span class="stat-value">36</span>
         <span class="stat-label" data-i18n="stat_weeks">Uger Live</span>
       </div>
     </div>
-    <p class="stat-note" data-i18n="datalfa_stat_note">Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 7. April, 2026).</p>
+    <p class="stat-note" data-i18n="datalfa_stat_note">Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 23. April, 2026).</p>
     <div class="entry">
       <div class="entry-title" data-i18n="datalfa_signal_title">Signalkonstruktion</div>
-      <p data-i18n="datalfa_signal_desc">Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.</p>
+      <p data-i18n="datalfa_signal_desc">Rullende OLS-residualer mod equal weighted land og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.</p>
     </div>
 
     <div class="entry">
@@ -733,11 +733,11 @@ const translations = {
     hero_location: "København, Danmark",
     datalfa_label: "Igangværende Projekt",
     datalfa_desc: "En systematisk nordisk large- og mid-cap strategi baseret på idiosynkratiske momentumsignaler. Live-handlet siden august 2025 med ugentlig rebalancering.",
-    datalfa_stat_note: "Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 28/03).",
+    datalfa_stat_note: "Note: Afkast og metrics er baseret på live-handlet performance (senest opdateret 23/04).",
     stat_weeks: "Uger Live",
     stat_return: "Total Afkast (siden 04/08/2025)",
     datalfa_signal_title: "Signalkonstruktion",
-    datalfa_signal_desc: "Rullende OLS-residualer mod equal weighted land- og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.",
+    datalfa_signal_desc: "Rullende OLS-residualer mod equal weighted land og sektorindeks renses for systematisk eksponering. Idiosynkratisk momentum akkumuleres over en 12 måneders periode med 1 måneds skip for at undgå kortsigtede reversal effekter. Et volatilitetsbaseret crashfilter ekskluderer aktier i unormale volatilitetsregimer. Signalet er underbygget af Newey-West HAC-robuste standardfejl som korrigerer for heteroskedasticitet og seriel korrelation i residualerne.",
     datalfa_regime_title: "Regime-overlay",
     datalfa_regime_desc: "Porteføljeeksponering skaleres via makroregime overlay der kombinerer tre indikatorer; Baltic Dry Index momentum, kreditspreadniveau og rentekurvens hældning, med en XGBoost timingmodel trænet på walk-forward krydsvalidering. Hvoraf den grundlæggende ide ved eksponering under 100%, bygger på at allokere resterende kapital til risikofrie aktiver.",
     datalfa_universe_title: "Univers & Eksekvering",
@@ -795,10 +795,10 @@ const translations = {
       hero_desc: "I am an ambitious student who combines data analysis with an understanding of economics. After five semesters in the Computer Science and Economics Bachelor’s program at the University of Copenhagen, I have built a solid foundation in both programming and economic principles. I plan to continue with a masters degree in economics (Cand.polit).",
       hero_location: "Copenhagen, Denmark",
       datalfa_label: "Ongoing Project",
-      datalfa_desc: "A systematic Nordic large- and mid-cap strategy based on idiosyncratic momentum signals. Live-traded since August 2025 with weekly rebalancing.",
+      datalfa_desc: "A systematic Nordic large and mid-cap strategy based on idiosyncratic momentum signals. Live-traded since August 2025 with weekly rebalancing.",
       stat_weeks: "Weeks Live",
       stat_return: "Total Return (since 04/08/2025)",
-      datalfa_stat_note: "Note: Returns and metrics are based on live-traded performance (last updated 03/28).",
+      datalfa_stat_note: "Note: Returns and metrics are based on live-traded performance (last updated 04/23).",
       datalfa_signal_title: "Signal Construction",
       datalfa_signal_desc: "Rolling OLS residuals against equal weighted country and sector indices are purged of systematic exposure. Idiosyncratic momentum is accumulated over a 12 month period with a 1 month skip to avoid short-term reversal effects. A volatility-based crash filter excludes stocks in abnormal volatility regimes. The signal is supported by Newey-West HAC-robust standard errors correcting for heteroskedasticity and serial correlation in residuals.",
       datalfa_regime_title: "Regime Overlay",
