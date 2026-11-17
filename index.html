@@ -572,6 +572,26 @@
     </div>
   </section>
 
+  <section id="portsim">
+  <p class="section-label" data-i18n="portsim_label">Igangværende Projekt</p>
+  <h2 data-i18n="portsim_title">Portefølje simulator</h2>
+  <p data-i18n="portsim_desc">En webapp til at simulere handler på rigtige aktier. Backend i FastAPI med en SQLite-transaktionsbog, frontend i almindelig HTML/JS med Chart.js.</p>
+
+  <div class="entry">
+    <div class="entry-title" data-i18n="portsim_ledger_title">Transaktionsbog</div>
+    <p data-i18n="portsim_ledger_desc">Køb, salg, indskud og hævninger med handler på historiske datoer. Gennemsnitskostpris i DKK, realiseret og urealiseret P&amp;L og kurtage (min. 29 kr / 0,1 %).</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title" data-i18n="portsim_data_title">Data &amp; historik</div>
+    <p data-i18n="portsim_data_desc">Kurser hentes via yfinance og caches lokalt som parquet. Historikgrafen viser et tidsvægtet indeks mod OMXC25. Projektet har tests.</p>
+  </div>
+
+  <div style="margin-top:16px;">
+    <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">pandas</span><span class="tag">Git</span>
+  </div>
+</section>
+
   <section id="thesis">
     <p class="section-label" data-i18n="thesis_label">Bachelorprojekt · Afsluttet med 12 · Forår 2026</p>
     <h2 data-i18n="thesis_title">Konkurrence på NYC's Transportmarkeder</h2>
@@ -814,6 +834,13 @@ const translations = {
       datalfa_universe_title: "Universe & Execution",
       datalfa_universe_desc: "A broad Nordic large-cap universe across DK, SE, NO and FI. Signals and HTML-report generated Friday, executed Monday morning with weekly rebalancing.",
       datalfa_report_label: "Weekly report (23/03)",
+      portsim_label: "Ongoing Project",
+      portsim_title: "Portfolio Simulator",
+      portsim_desc: "A web app for simulating trades on real stocks. FastAPI backend with an SQLite transaction ledger, plain HTML/JS frontend with Chart.js.",
+      portsim_ledger_title: "Transaction Ledger",
+      portsim_ledger_desc: "Buys, sells, deposits and withdrawals, including trades on historical dates. Average cost basis in DKK, realised and unrealised P&L and brokerage fees (min. 29 DKK / 0.1%).",
+      portsim_data_title: "Data & History",
+      portsim_data_desc: "Prices are fetched via yfinance and cached locally as parquet. The history chart shows a time-weighted index against OMXC25. The project has tests.",
       thesis_label: "Bachelor Thesis · Completed with 12 · Spring 2026",
       thesis_title: "Competition in NYC Transportation Markets",
       thesis_desc: "Structural estimation of demand for urban transportation in New York City using Berry, Levinsohn & Pakes (1995) discrete choice methods on 43.9 million trips from taxi, Uber/Lyft and MTA data. The data was cleaned, filtered and aggregated in pandas before the model was estimated. The model is used to analyse substitution patterns and counterfactual scenarios, including free buses in Queens.",
